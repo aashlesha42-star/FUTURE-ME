@@ -1,0 +1,2356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#8b5cf6">
+<title>Future Me 2.0 ✨</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --primary:#8b5cf6;
+  --secondary:#ec4899;
+  --accent:#f59e0b;
+  --bg:#f8f5ff;
+  --card:#ffffff;
+  --text:#28223d;
+  --muted:#77718a;
+  --border:#eee7ff;
+  --shadow:0 12px 35px rgba(76,50,130,.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:Poppins,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:.3s;
+  overflow-x:hidden;
+}
+
+body.dark{
+  --bg:#171522;
+  --card:#242131;
+  --text:#f7f3ff;
+  --muted:#b9b2c9;
+  --border:#383249;
+  --shadow:0 12px 35px rgba(0,0,0,.25);
+}
+
+button,input,textarea,select{font-family:inherit}
+
+button{cursor:pointer}
+
+a{text-decoration:none;color:inherit}
+
+/* BACKGROUND */
+
+.blob{
+  position:fixed;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:.18;
+  z-index:-2;
+}
+
+.blob.one{background:#c084fc;top:5%;left:-100px}
+.blob.two{background:#f472b6;right:-100px;top:45%}
+.blob.three{background:#60a5fa;left:25%;bottom:-120px}
+
+.stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+}
+
+.star{
+  position:absolute;
+  animation:float 5s infinite ease-in-out;
+  opacity:.5;
+}
+
+@keyframes float{
+  50%{transform:translateY(-20px) rotate(15deg)}
+}
+
+/* NAV */
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:13px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.dark nav{
+  background:rgba(23,21,34,.88);
+}
+
+.logo{
+  font-size:23px;
+  font-weight:800;
+  color:var(--primary);
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.nav-link{
+  border:0;
+  background:transparent;
+  padding:9px 12px;
+  border-radius:12px;
+  color:var(--text);
+  font-weight:600;
+  font-size:13px;
+}
+
+.nav-link:hover{
+  background:var(--border);
+}
+
+.icon-btn{
+  border:0;
+  background:var(--border);
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  font-size:17px;
+}
+
+/* HERO */
+
+.hero{
+  min-height:78vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:70px 20px;
+}
+
+.hero-content{max-width:850px}
+
+.eyebrow{
+  display:inline-block;
+  background:var(--card);
+  color:var(--primary);
+  padding:9px 18px;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-size:clamp(48px,9vw,88px);
+  line-height:1;
+  background:linear-gradient(90deg,#7c3aed,#ec4899,#f97316);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:650px;
+  margin:22px auto;
+  color:var(--muted);
+  font-size:18px;
+}
+
+.primary{
+  border:0;
+  padding:13px 23px;
+  border-radius:30px;
+  color:white;
+  font-weight:700;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  box-shadow:0 8px 25px rgba(139,92,246,.25);
+  transition:.25s;
+}
+
+.primary:hover{
+  transform:translateY(-3px) scale(1.02);
+}
+
+.secondary{
+  border:1px solid var(--border);
+  padding:12px 20px;
+  border-radius:30px;
+  background:var(--card);
+  color:var(--text);
+  font-weight:600;
+}
+
+/* SECTIONS */
+
+section{
+  padding:65px 6%;
+  max-width:1250px;
+  margin:auto;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:32px;
+}
+
+.title h2{font-size:34px}
+
+.title p{
+  color:var(--muted);
+  margin-top:5px;
+}
+
+/* DASHBOARD */
+
+.profile-card{
+  background:linear-gradient(135deg,#8b5cf6,#ec4899);
+  color:white;
+  border-radius:30px;
+  padding:30px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  box-shadow:var(--shadow);
+  margin-bottom:25px;
+}
+
+.avatar{
+  width:80px;
+  height:80px;
+  background:white;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:40px;
+}
+
+.profile-card h2{font-size:25px}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+  gap:15px;
+}
+
+.stat{
+  background:var(--card);
+  padding:20px;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+}
+
+.stat .num{
+  font-size:29px;
+  font-weight:800;
+  color:var(--primary);
+}
+
+.stat small{color:var(--muted)}
+
+/* GRID */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:25px;
+  padding:24px;
+  box-shadow:var(--shadow);
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:14px;
+}
+
+.big-icon{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+/* FORMS */
+
+input,textarea,select{
+  width:100%;
+  border:2px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  padding:12px 14px;
+  border-radius:14px;
+  outline:none;
+  margin:7px 0;
+}
+
+input:focus,textarea:focus{
+  border-color:var(--primary);
+}
+
+textarea{
+  min-height:180px;
+  resize:vertical;
+}
+
+.row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.row>*{flex:1}
+
+/* LETTER */
+
+.letter-paper{
+  background:linear-gradient(135deg,#fff8fc,#f6f0ff);
+}
+
+.dark .letter-paper{
+  background:#29243a;
+}
+
+/* LISTS */
+
+.item-list{
+  list-style:none;
+  margin-top:15px;
+}
+
+.item-list li{
+  background:rgba(139,92,246,.07);
+  border:1px solid var(--border);
+  padding:13px;
+  border-radius:14px;
+  margin-bottom:9px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.item-list li.done .item-text{
+  text-decoration:line-through;
+  opacity:.5;
+}
+
+.small{
+  border:0;
+  background:var(--border);
+  padding:7px 9px;
+  border-radius:9px;
+}
+
+/* MOODS */
+
+.moods{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+}
+
+.mood{
+  border:2px solid var(--border);
+  background:var(--card);
+  width:70px;
+  height:65px;
+  border-radius:20px;
+  font-size:30px;
+  transition:.2s;
+}
+
+.mood:hover{
+  transform:translateY(-5px) scale(1.05);
+}
+
+/* QUOTE */
+
+.quote{
+  background:linear-gradient(135deg,#7c3aed,#ec4899);
+  color:white;
+  padding:45px 25px;
+  border-radius:30px;
+  text-align:center;
+}
+
+.quote-text{
+  font-size:22px;
+  font-weight:600;
+  margin-bottom:20px;
+}
+
+/* MEMORY WALL */
+
+.memory-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:18px;
+}
+
+.memory{
+  overflow:hidden;
+  background:var(--card);
+  border-radius:20px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+
+.memory img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  display:block;
+}
+
+.memory-content{padding:15px}
+
+.memory-date{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* BADGES */
+
+.badges{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:15px;
+}
+
+.badge{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:22px 12px;
+  text-align:center;
+  border-radius:20px;
+  box-shadow:var(--shadow);
+}
+
+.badge-icon{
+  font-size:40px;
+  filter:grayscale(1);
+  opacity:.35;
+}
+
+.badge.unlocked .badge-icon{
+  filter:none;
+  opacity:1;
+}
+
+.badge small{
+  display:block;
+  color:var(--muted);
+  margin-top:5px;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:20px 0;
+}
+
+.time{
+  min-width:90px;
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:18px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.time strong{
+  display:block;
+  font-size:27px;
+  color:var(--primary);
+}
+
+/* CALENDAR */
+
+.calendar{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:7px;
+  margin-top:15px;
+}
+
+.day{
+  min-height:65px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:7px;
+  font-size:12px;
+}
+
+.day.has-memory{
+  background:rgba(236,72,153,.13);
+  border-color:#ec4899;
+}
+
+.calendar-head{
+  text-align:center;
+  font-weight:700;
+  color:var(--muted);
+}
+
+/* CAPSULE */
+
+.capsule{
+  background:linear-gradient(135deg,#fce7f3,#ede9fe);
+  color:#34294c;
+  padding:30px;
+  border-radius:25px;
+}
+
+.dark .capsule{
+  background:linear-gradient(135deg,#35253b,#292344);
+  color:white;
+}
+
+/* SETTINGS */
+
+.theme-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.theme{
+  border:2px solid var(--border);
+  padding:12px 17px;
+  border-radius:15px;
+  background:var(--card);
+  cursor:pointer;
+}
+
+/* INSTALL */
+
+.install-box{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:25px;
+  padding:25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+/* FOOTER */
+
+footer{
+  background:#211d31;
+  color:white;
+  text-align:center;
+  padding:40px 20px;
+}
+
+footer span{color:#f472b6}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:3000;
+  padding:20px;
+}
+
+.modal.show{display:flex}
+
+.modal-box{
+  width:min(500px,100%);
+  background:var(--card);
+  color:var(--text);
+  padding:28px;
+  border-radius:25px;
+  position:relative;
+  max-height:90vh;
+  overflow:auto;
+}
+
+.close{
+  position:absolute;
+  top:15px;
+  right:15px;
+  border:0;
+  background:var(--border);
+  border-radius:50%;
+  width:35px;
+  height:35px;
+}
+
+/* CONFETTI */
+
+.confetti{
+  position:fixed;
+  top:-20px;
+  z-index:5000;
+  font-size:20px;
+  animation:fall 3s linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  nav{
+    padding:12px 4%;
+  }
+
+  .nav-link{
+    display:none;
+  }
+
+  section{
+    padding:50px 5%;
+  }
+
+  .hero h1{
+    font-size:52px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .profile-card{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .row{
+    flex-direction:column;
+  }
+
+  .row>*{
+    width:100%;
+  }
+
+  .install-box{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .calendar{
+    gap:3px;
+  }
+
+  .day{
+    min-height:50px;
+    font-size:10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="blob one"></div>
+<div class="blob two"></div>
+<div class="blob three"></div>
+
+<div class="stars">
+  <span class="star" style="top:12%;left:5%">✨</span>
+  <span class="star" style="top:25%;right:7%">⭐</span>
+  <span class="star" style="top:65%;left:8%">💫</span>
+  <span class="star" style="bottom:10%;right:10%">🌸</span>
+</div>
+
+
+<!-- NAVBAR -->
+
+<nav>
+  <div class="logo">✨ Future Me</div>
+
+  <div class="nav-right">
+    <button class="nav-link" onclick="go('dashboard')">Home</button>
+    <button class="nav-link" onclick="go('letter')">Letter</button>
+    <button class="nav-link" onclick="go('memories')">Memories</button>
+    <button class="nav-link" onclick="go('goals')">Goals</button>
+    <button class="icon-btn" onclick="toggleDark()" id="darkBtn">🌙</button>
+    <button class="icon-btn" onclick="openProfile()">👤</button>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+  <div class="hero-content">
+
+    <div class="eyebrow">🌷 Your little corner of the future</div>
+
+    <h1>Dear Future Me...</h1>
+
+    <p>
+      Write your dreams, save your memories, celebrate your wins
+      and create little time capsules for the person you're becoming. 💜
+    </p>
+
+    <button class="primary" onclick="go('dashboard')">
+      Enter My World ✨
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- DASHBOARD -->
+
+<section id="dashboard">
+
+  <div class="title">
+    <h2>🌈 My Little Dashboard</h2>
+    <p>Your journey, all in one place.</p>
+  </div>
+
+  <div class="profile-card">
+
+    <div class="avatar" id="avatar">🌸</div>
+
+    <div>
+      <h2>Hello, <span id="profileName">Dreamer</span>! ✨</h2>
+      <p>Keep becoming the person you want to be.</p>
+    </div>
+
+    <button class="secondary" onclick="openProfile()">
+      Edit Profile
+    </button>
+
+  </div>
+
+  <div class="stats">
+
+    <div class="stat">
+      <div class="num" id="goalCount">0</div>
+      <small>🎯 Goals</small>
+    </div>
+
+    <div class="stat">
+      <div class="num" id="memoryCount">0</div>
+      <small>📸 Memories</small>
+    </div>
+
+    <div class="stat">
+      <div class="num" id="achievementCount">0</div>
+      <small>🏆 Achievements</small>
+    </div>
+
+    <div class="stat">
+      <div class="num" id="capsuleCount">0</div>
+      <small>💌 Capsules</small>
+    </div>
+
+    <div class="stat">
+      <div class="num" id="streakCount">1</div>
+      <small>🔥 Streak</small>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DAILY MOOD -->
+
+<section>
+
+  <div class="title">
+    <h2>🌈 How Are You Feeling?</h2>
+    <p>Check in with yourself today.</p>
+  </div>
+
+  <div class="moods">
+
+    <button class="mood" onclick="setMood('😊 Happy')">😊</button>
+    <button class="mood" onclick="setMood('🥰 Loved')">🥰</button>
+    <button class="mood" onclick="setMood('😎 Confident')">😎</button>
+    <button class="mood" onclick="setMood('😴 Tired')">😴</button>
+    <button class="mood" onclick="setMood('🤔 Thoughtful')">🤔</button>
+    <button class="mood" onclick="setMood('🌸 Peaceful')">🌸</button>
+    <button class="mood" onclick="setMood('🎨 Creative')">🎨</button>
+
+  </div>
+
+  <p id="moodResult"
+     style="text-align:center;margin-top:20px;font-weight:600">
+  </p>
+
+</section>
+
+
+<!-- LETTER -->
+
+<section id="letter">
+
+  <div class="title">
+    <h2>💌 Letter to Future Me</h2>
+    <p>Write something your future self should remember.</p>
+  </div>
+
+  <div class="card letter-paper">
+
+    <textarea id="letterText"
+      placeholder="Dear future me...
+
+What are you proud of?
+What are you dreaming about?
+What do you hope has changed?
+What do you never want to forget?
+
+Love,
+Me 💜"></textarea>
+
+    <div class="row">
+
+      <button class="primary" onclick="saveLetter()">
+        Save My Letter 💌
+      </button>
+
+      <button class="secondary" onclick="clearLetter()">
+        Clear
+      </button>
+
+    </div>
+
+    <p id="letterStatus"></p>
+
+  </div>
+
+</section>
+
+
+<!-- GOALS -->
+
+<section id="goals">
+
+  <div class="title">
+    <h2>🎯 My Goals</h2>
+    <p>Dream it. Break it down. Do it.</p>
+  </div>
+
+  <div class="card">
+
+    <div class="row">
+
+      <input id="goalInput"
+        placeholder="Example: Learn a new skill">
+
+      <button class="primary" onclick="addGoal()">
+        Add Goal +
+      </button>
+
+    </div>
+
+    <ul id="goalList" class="item-list"></ul>
+
+  </div>
+
+</section>
+
+
+<!-- BUCKET LIST -->
+
+<section id="bucket">
+
+  <div class="title">
+    <h2>🪣 My Bucket List</h2>
+    <p>Things I want to experience someday.</p>
+  </div>
+
+  <div class="card">
+
+    <div class="row">
+
+      <input id="bucketInput"
+        placeholder="Example: Watch a sunrise at the beach">
+
+      <button class="primary" onclick="addBucket()">
+        Add +
+      </button>
+
+    </div>
+
+    <ul id="bucketList" class="item-list"></ul>
+
+  </div>
+
+</section>
+
+
+<!-- MEMORIES -->
+
+<section id="memories">
+
+  <div class="title">
+    <h2>📸 Memory Wall</h2>
+    <p>Keep little pieces of your life here.</p>
+  </div>
+
+  <div class="card">
+
+    <div class="row">
+
+      <input id="memoryTitle"
+        placeholder="Memory title">
+
+      <input id="memoryDate"
+        type="date">
+
+    </div>
+
+    <textarea id="memoryCaption"
+      placeholder="Write a little caption..."></textarea>
+
+    <input id="memoryImage"
+      type="file"
+      accept="image/*">
+
+    <button class="primary" onclick="addMemory()">
+      Add Memory 📸
+    </button>
+
+  </div>
+
+  <br>
+
+  <div id="memoryGrid" class="memory-grid"></div>
+
+</section>
+
+
+<!-- CALENDAR -->
+
+<section>
+
+  <div class="title">
+    <h2>🗓️ Memory Calendar</h2>
+    <p>See the days where you saved memories.</p>
+  </div>
+
+  <div class="card">
+
+    <div class="row">
+
+      <button class="secondary" onclick="changeMonth(-1)">
+        ← Previous
+      </button>
+
+      <h3 id="monthTitle"
+          style="text-align:center">
+      </h3>
+
+      <button class="secondary" onclick="changeMonth(1)">
+        Next →
+      </button>
+
+    </div>
+
+    <div class="calendar"
+         id="calendar"></div>
+
+  </div>
+
+</section>
+
+
+<!-- TIME CAPSULE -->
+
+<section>
+
+  <div class="title">
+    <h2>💌 Time Capsule</h2>
+    <p>Write a message for a future version of yourself.</p>
+  </div>
+
+  <div class="capsule">
+
+    <h3>🔐 A message waiting for future you</h3>
+
+    <textarea id="capsuleText"
+      placeholder="Dear future me..."></textarea>
+
+    <div class="row">
+
+      <input id="capsuleDate"
+        type="date">
+
+      <button class="primary"
+        onclick="createCapsule()">
+        Seal Capsule 🔐
+      </button>
+
+    </div>
+
+  </div>
+
+  <br>
+
+  <div id="capsuleList"></div>
+
+</section>
+
+
+<!-- ACHIEVEMENTS -->
+
+<section>
+
+  <div class="title">
+    <h2>🏆 Achievements</h2>
+    <p>Celebrate every little win.</p>
+  </div>
+
+  <div class="card">
+
+    <div class="row">
+
+      <input id="achievementInput"
+        placeholder="Something I'm proud of...">
+
+      <button class="primary"
+        onclick="addAchievement()">
+        Add 🏆
+      </button>
+
+    </div>
+
+    <ul id="achievementList"
+        class="item-list"></ul>
+
+  </div>
+
+</section>
+
+
+<!-- BADGES -->
+
+<section>
+
+  <div class="title">
+    <h2>🏅 My Badges</h2>
+    <p>Unlock them as you use Future Me.</p>
+  </div>
+
+  <div class="badges">
+
+    <div class="badge" id="badgeGoal">
+      <div class="badge-icon">🎯</div>
+      <b>Dream Starter</b>
+      <small>Create your first goal</small>
+    </div>
+
+    <div class="badge" id="badgeMemory">
+      <div class="badge-icon">📸</div>
+      <b>Memory Keeper</b>
+      <small>Save your first memory</small>
+    </div>
+
+    <div class="badge" id="badgeLetter">
+      <div class="badge-icon">💌</div>
+      <b>Dear Future Me</b>
+      <small>Write a letter</small>
+    </div>
+
+    <div class="badge" id="badgeCapsule">
+      <div class="badge-icon">🔐</div>
+      <b>Time Traveler</b>
+      <small>Create a capsule</small>
+    </div>
+
+    <div class="badge" id="badgeAchievement">
+      <div class="badge-icon">🏆</div>
+      <b>Little Winner</b>
+      <small>Save an achievement</small>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MOTIVATION -->
+
+<section>
+
+  <div class="title">
+    <h2>✨ Daily Motivation</h2>
+  </div>
+
+  <div class="quote">
+
+    <div class="quote-text"
+         id="quoteText">
+      Believe in the person you're becoming. 💜
+    </div>
+
+    <button class="secondary"
+      onclick="newQuote()">
+      New Quote ✨
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+
+<section>
+
+  <div class="title">
+    <h2>⏳ Future Countdown</h2>
+    <p>Choose a date you're excited about.</p>
+  </div>
+
+  <div class="card">
+
+    <input id="futureDate"
+      type="date">
+
+    <button class="primary"
+      onclick="startCountdown()">
+      Start Countdown 🚀
+    </button>
+
+    <div class="countdown">
+
+      <div class="time">
+        <strong id="days">0</strong>
+        Days
+      </div>
+
+      <div class="time">
+        <strong id="hours">0</strong>
+        Hours
+      </div>
+
+      <div class="time">
+        <strong id="minutes">0</strong>
+        Minutes
+      </div>
+
+      <div class="time">
+        <strong id="seconds">0</strong>
+        Seconds
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SETTINGS -->
+
+<section>
+
+  <div class="title">
+    <h2>🎨 Make It Yours</h2>
+    <p>Choose your Future Me vibe.</p>
+  </div>
+
+  <div class="card">
+
+    <h3>🎨 Themes</h3>
+
+    <br>
+
+    <div class="theme-grid">
+
+      <button class="theme"
+        onclick="theme('#8b5cf6','#ec4899')">
+        💜 Dreamy
+      </button>
+
+      <button class="theme"
+        onclick="theme('#06b6d4','#3b82f6')">
+        💙 Ocean
+      </button>
+
+      <button class="theme"
+        onclick="theme('#10b981','#84cc16')">
+        💚 Nature
+      </button>
+
+      <button class="theme"
+        onclick="theme('#f97316','#ef4444')">
+        🧡 Sunset
+      </button>
+
+      <button class="theme"
+        onclick="theme('#e11d48','#a855f7')">
+        💗 Candy
+      </button>
+
+    </div>
+
+    <br>
+
+    <button class="secondary"
+      onclick="toggleDark()">
+      🌙 Toggle Dark Mode
+    </button>
+
+    <button class="secondary"
+      onclick="resetEverything()">
+      🗑️ Reset My Data
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- INSTALL -->
+
+<section>
+
+  <div class="install-box">
+
+    <div>
+      <h3>📱 Take Future Me With You</h3>
+      <p>
+        Install this website on your phone for a
+        more app-like experience.
+      </p>
+    </div>
+
+    <button class="primary"
+      id="installBtn"
+      onclick="installApp()">
+      Install App 📱
+    </button>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <h3>✨ Future Me</h3>
+
+  <p>
+    A little space for your dreams, memories and future.
+  </p>
+
+  <br>
+
+  <span>Made with 💜 for the person you're becoming.</span>
+
+</footer>
+
+
+<!-- PROFILE MODAL -->
+
+<div class="modal" id="profileModal">
+
+  <div class="modal-box">
+
+    <button class="close"
+      onclick="closeProfile()">×</button>
+
+    <h2>👤 My Profile</h2>
+
+    <p style="color:var(--muted)">
+      Personalize your little Future Me world.
+    </p>
+
+    <br>
+
+    <input id="nameInput"
+      placeholder="Your name">
+
+    <select id="avatarInput">
+      <option value="🌸">🌸 Flower</option>
+      <option value="🦋">🦋 Butterfly</option>
+      <option value="🌙">🌙 Moon</option>
+      <option value="⭐">⭐ Star</option>
+      <option value="🐻">🐻 Bear</option>
+      <option value="🐰">🐰 Bunny</option>
+      <option value="🌈">🌈 Rainbow</option>
+      <option value="🪐">🪐 Planet</option>
+    </select>
+
+    <button class="primary"
+      onclick="saveProfile()">
+      Save Profile 💜
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* STORAGE */
+
+const get=(key, fallback=[]) =>
+  JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));
+
+const set=(key,value) =>
+  localStorage.setItem(key,JSON.stringify(value));
+
+
+/* NAV */
+
+function go(id){
+  document.getElementById(id).scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+
+/* PROFILE */
+
+function openProfile(){
+
+  document.getElementById("profileModal")
+    .classList.add("show");
+
+  document.getElementById("nameInput").value =
+    localStorage.getItem("profileName") || "";
+
+  document.getElementById("avatarInput").value =
+    localStorage.getItem("profileAvatar") || "🌸";
+}
+
+function closeProfile(){
+  document.getElementById("profileModal")
+    .classList.remove("show");
+}
+
+function saveProfile(){
+
+  const name =
+    document.getElementById("nameInput").value.trim()
+    || "Dreamer";
+
+  const avatar =
+    document.getElementById("avatarInput").value;
+
+  localStorage.setItem("profileName",name);
+  localStorage.setItem("profileAvatar",avatar);
+
+  updateProfile();
+
+  closeProfile();
+
+  celebrate();
+}
+
+function updateProfile(){
+
+  document.getElementById("profileName").innerText =
+    localStorage.getItem("profileName") || "Dreamer";
+
+  document.getElementById("avatar").innerText =
+    localStorage.getItem("profileAvatar") || "🌸";
+}
+
+
+/* LETTER */
+
+function saveLetter(){
+
+  const text =
+    document.getElementById("letterText").value.trim();
+
+  if(!text){
+    alert("Write something first 💜");
+    return;
+  }
+
+  localStorage.setItem("futureLetter",text);
+
+  document.getElementById("letterStatus").innerText =
+    "💌 Saved! Future you will be happy to read this.";
+
+  unlockBadges();
+
+  celebrate();
+}
+
+function clearLetter(){
+
+  if(confirm("Clear your letter?")){
+    localStorage.removeItem("futureLetter");
+    document.getElementById("letterText").value="";
+    document.getElementById("letterStatus").innerText="";
+  }
+
+}
+
+
+/* GOALS */
+
+function addGoal(){
+
+  const input=document.getElementById("goalInput");
+  const value=input.value.trim();
+
+  if(!value)return;
+
+  let goals=get("goals");
+
+  goals.push({
+    text:value,
+    done:false
+  });
+
+  set("goals",goals);
+
+  input.value="";
+
+  renderGoals();
+
+  celebrate();
+}
+
+function renderGoals(){
+
+  const list=document.getElementById("goalList");
+  const goals=get("goals");
+
+  list.innerHTML="";
+
+  goals.forEach((goal,index)=>{
+
+    const li=document.createElement("li");
+
+    if(goal.done)li.classList.add("done");
+
+    li.innerHTML=`
+
+      <span class="item-text"
+        onclick="toggleGoal(${index})"
+        style="cursor:pointer">
+
+        ${goal.done ? "✅":"⭕"} ${escapeHTML(goal.text)}
+
+      </span>
+
+      <button class="small"
+        onclick="deleteGoal(${index})">
+        🗑️
+      </button>
+
+    `;
+
+    list.appendChild(li);
+  });
+
+  document.getElementById("goalCount").innerText=goals.length;
+
+  unlockBadges();
+}
+
+function toggleGoal(index){
+
+  let goals=get("goals");
+
+  goals[index].done=!goals[index].done;
+
+  set("goals",goals);
+
+  renderGoals();
+
+  if(goals[index].done)celebrate();
+}
+
+function deleteGoal(index){
+
+  let goals=get("goals");
+
+  goals.splice(index,1);
+
+  set("goals",goals);
+
+  renderGoals();
+}
+
+
+/* BUCKET */
+
+function addBucket(){
+
+  const input=document.getElementById("bucketInput");
+  const value=input.value.trim();
+
+  if(!value)return;
+
+  let items=get("bucket");
+
+  items.push({
+    text:value,
+    done:false
+  });
+
+  set("bucket",items);
+
+  input.value="";
+
+  renderBucket();
+}
+
+function renderBucket(){
+
+  const list=document.getElementById("bucketList");
+  const items=get("bucket");
+
+  list.innerHTML="";
+
+  items.forEach((item,index)=>{
+
+    const li=document.createElement("li");
+
+    if(item.done)li.classList.add("done");
+
+    li.innerHTML=`
+
+      <span class="item-text"
+        onclick="toggleBucket(${index})"
+        style="cursor:pointer">
+
+        ${item.done ? "✅":"🌸"}
+        ${escapeHTML(item.text)}
+
+      </span>
+
+      <button class="small"
+        onclick="deleteBucket(${index})">
+        🗑️
+      </button>
+    `;
+
+    list.appendChild(li);
+
+  });
+}
+
+function toggleBucket(index){
+
+  let items=get("bucket");
+
+  items[index].done=!items[index].done;
+
+  set("bucket",items);
+
+  renderBucket();
+}
+
+function deleteBucket(index){
+
+  let items=get("bucket");
+
+  items.splice(index,1);
+
+  set("bucket",items);
+
+  renderBucket();
+}
+
+
+/* ACHIEVEMENTS */
+
+function addAchievement(){
+
+  const input=
+    document.getElementById("achievementInput");
+
+  const value=input.value.trim();
+
+  if(!value)return;
+
+  let achievements=get("achievements");
+
+  achievements.push(value);
+
+  set("achievements",achievements);
+
+  input.value="";
+
+  renderAchievements();
+
+  celebrate();
+}
+
+function renderAchievements(){
+
+  const list=
+    document.getElementById("achievementList");
+
+  const achievements=get("achievements");
+
+  list.innerHTML="";
+
+  achievements.forEach((item,index)=>{
+
+    const li=document.createElement("li");
+
+    li.innerHTML=`
+
+      <span>🏆 ${escapeHTML(item)}</span>
+
+      <button class="small"
+        onclick="deleteAchievement(${index})">
+        🗑️
+      </button>
+
+    `;
+
+    list.appendChild(li);
+  });
+
+  document.getElementById("achievementCount")
+    .innerText=achievements.length;
+
+  unlockBadges();
+}
+
+function deleteAchievement(index){
+
+  let achievements=get("achievements");
+
+  achievements.splice(index,1);
+
+  set("achievements",achievements);
+
+  renderAchievements();
+}
+
+
+/* MEMORY WALL */
+
+function addMemory(){
+
+  const title=
+    document.getElementById("memoryTitle").value.trim();
+
+  const caption=
+    document.getElementById("memoryCaption").value.trim();
+
+  const date=
+    document.getElementById("memoryDate").value;
+
+  const file=
+    document.getElementById("memoryImage").files[0];
+
+  if(!title && !caption && !file){
+    alert("Add a memory first 📸");
+    return;
+  }
+
+  if(file){
+
+    const reader=new FileReader();
+
+    reader.onload=function(e){
+
+      saveMemory(
+        title,
+        caption,
+        date,
+        e.target.result
+      );
+
+    };
+
+    reader.readAsDataURL(file);
+
+  }else{
+
+    saveMemory(title,caption,date,"");
+
+  }
+}
+
+function saveMemory(title,caption,date,image){
+
+  let memories=get("memories");
+
+  memories.push({
+    title:title || "A Little Memory",
+    caption:caption || "",
+    date:date || new Date().toISOString().slice(0,10),
+    image:image
+  });
+
+  set("memories",memories);
+
+  document.getElementById("memoryTitle").value="";
+  document.getElementById("memoryCaption").value="";
+  document.getElementById("memoryDate").value="";
+  document.getElementById("memoryImage").value="";
+
+  renderMemories();
+
+  celebrate();
+}
+
+function renderMemories(){
+
+  const grid=document.getElementById("memoryGrid");
+  const memories=get("memories");
+
+  grid.innerHTML="";
+
+  memories.slice().reverse().forEach((memory,index)=>{
+
+    const actualIndex=memories.length-1-index;
+
+    const div=document.createElement("div");
+
+    div.className="memory";
+
+    div.innerHTML=`
+
+      ${
+        memory.image
+        ? `<img src="${memory.image}" alt="Memory">`
+        : `<div style="
+          height:180px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size:55px;
+          background:linear-gradient(135deg,#fce7f3,#ede9fe)">
+          💜
+        </div>`
+      }
+
+      <div class="memory-content">
+
+        <h3>${escapeHTML(memory.title)}</h3>
+
+        <div class="memory-date">
+          📅 ${memory.date}
+        </div>
+
+        <p style="margin-top:8px">
+          ${escapeHTML(memory.caption)}
+        </p>
+
+        <button class="small"
+          style="margin-top:10px"
+          onclick="deleteMemory(${actualIndex})">
+          🗑️ Delete
+        </button>
+
+      </div>
+    `;
+
+    grid.appendChild(div);
+  });
+
+  document.getElementById("memoryCount")
+    .innerText=memories.length;
+
+  renderCalendar();
+  unlockBadges();
+}
+
+function deleteMemory(index){
+
+  let memories=get("memories");
+
+  memories.splice(index,1);
+
+  set("memories",memories);
+
+  renderMemories();
+}
+
+
+/* CALENDAR */
+
+let calendarDate=new Date();
+
+function changeMonth(amount){
+
+  calendarDate.setMonth(
+    calendarDate.getMonth()+amount
+  );
+
+  renderCalendar();
+}
+
+function renderCalendar(){
+
+  const calendar=
+    document.getElementById("calendar");
+
+  const title=
+    document.getElementById("monthTitle");
+
+  const year=calendarDate.getFullYear();
+  const month=calendarDate.getMonth();
+
+  const monthName=
+    calendarDate.toLocaleString("default",{
+      month:"long"
+    });
+
+  title.innerText=`${monthName} ${year}`;
+
+  calendar.innerHTML="";
+
+  const days=
+    ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+  days.forEach(day=>{
+
+    const d=document.createElement("div");
+
+    d.className="calendar-head";
+
+    d.innerText=day;
+
+    calendar.appendChild(d);
+
+  });
+
+  const firstDay=
+    new Date(year,month,1).getDay();
+
+  const totalDays=
+    new Date(year,month+1,0).getDate();
+
+  for(let i=0;i<firstDay;i++){
+
+    const blank=document.createElement("div");
+
+    calendar.appendChild(blank);
+
+  }
+
+  const memories=get("memories");
+
+  for(let day=1;day<=totalDays;day++){
+
+    const cell=document.createElement("div");
+
+    cell.className="day";
+
+    const dateString=
+      `${year}-${String(month+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
+
+    const hasMemory=
+      memories.some(m=>m.date===dateString);
+
+    if(hasMemory)
+      cell.classList.add("has-memory");
+
+    cell.innerHTML=
+      `<b>${day}</b>${hasMemory?"<br>📸":""}`;
+
+    calendar.appendChild(cell);
+  }
+}
+
+
+/* TIME CAPSULE */
+
+function createCapsule(){
+
+  const text=
+    document.getElementById("capsuleText").value.trim();
+
+  const date=
+    document.getElementById("capsuleDate").value;
+
+  if(!text || !date){
+    alert("Write a message and choose a date 💌");
+    return;
+  }
+
+  let capsules=get("capsules");
+
+  capsules.push({
+    text:text,
+    date:date,
+    created:new Date().toISOString()
+  });
+
+  set("capsules",capsules);
+
+  document.getElementById("capsuleText").value="";
+  document.getElementById("capsuleDate").value="";
+
+  renderCapsules();
+
+  celebrate();
+}
+
+function renderCapsules(){
+
+  const box=
+    document.getElementById("capsuleList");
+
+  const capsules=get("capsules");
+
+  box.innerHTML="";
+
+  document.getElementById("capsuleCount")
+    .innerText=capsules.length;
+
+  capsules.forEach((capsule,index)=>{
+
+    const unlocked=
+      new Date() >= new Date(capsule.date+"T00:00:00");
+
+    const div=document.createElement("div");
+
+    div.className="card";
+
+    div.style.marginBottom="12px";
+
+    div.innerHTML=`
+
+      <h3>
+        ${unlocked ? "🔓 Capsule Open!" : "🔐 Capsule Sealed"}
+      </h3>
+
+      <p>
+        ${unlocked
+          ? escapeHTML(capsule.text)
+          : `This message opens on <b>${capsule.date}</b>.`
+        }
+      </p>
+
+      <button class="small"
+        style="margin-top:10px"
+        onclick="deleteCapsule(${index})">
+        🗑️ Delete
+      </button>
+
+    `;
+
+    box.appendChild(div);
+  });
+
+  unlockBadges();
+}
+
+function deleteCapsule(index){
+
+  let capsules=get("capsules");
+
+  capsules.splice(index,1);
+
+  set("capsules",capsules);
+
+  renderCapsules();
+}
+
+
+/* MOOD */
+
+function setMood(mood){
+
+  document.getElementById("moodResult").innerText=
+    `Today I feel: ${mood} 💜`;
+
+  localStorage.setItem("todayMood",mood);
+}
+
+
+/* QUOTES */
+
+const quotes=[
+
+"Believe in the person you're becoming. 💜",
+
+"Small progress is still progress. 🌱",
+
+"Your future is created by what you do today. ✨",
+
+"You are allowed to dream bigger than yesterday. 🌈",
+
+"One day you'll thank yourself for not giving up. ⭐",
+
+"Your story is still being written. 📖",
+
+"Keep going. Your future self is cheering for you. 🎉",
+
+"You don't have to have everything figured out today. 🌷",
+
+"Your little steps still count. 💫"
+
+];
+
+function newQuote(){
+
+  const random=
+    Math.floor(Math.random()*quotes.length);
+
+  document.getElementById("quoteText")
+    .innerText=quotes[random];
+}
+
+
+/* COUNTDOWN */
+
+let countdownTimer;
+
+function startCountdown(){
+
+  clearInterval(countdownTimer);
+
+  const value=
+    document.getElementById("futureDate").value;
+
+  if(!value)return;
+
+  const target=
+    new Date(value+"T23:59:59").getTime();
+
+  countdownTimer=setInterval(()=>{
+
+    const distance=
+      target-Date.now();
+
+    if(distance<=0){
+
+      clearInterval(countdownTimer);
+
+      ["days","hours","minutes","seconds"]
+        .forEach(id=>
+          document.getElementById(id).innerText=0
+        );
+
+      celebrate();
+
+      return;
+    }
+
+    document.getElementById("days").innerText=
+      Math.floor(distance/(1000*60*60*24));
+
+    document.getElementById("hours").innerText=
+      Math.floor(
+        distance%(1000*60*60*24)
+        /(1000*60*60)
+      );
+
+    document.getElementById("minutes").innerText=
+      Math.floor(
+        distance%(1000*60*60)
+        /(1000*60)
+      );
+
+    document.getElementById("seconds").innerText=
+      Math.floor(
+        distance%(1000*60)
+        /1000
+      );
+
+  },1000);
+}
+
+
+/* DARK MODE */
+
+function toggleDark(){
+
+  document.body.classList.toggle("dark");
+
+  localStorage.setItem(
+    "darkMode",
+    document.body.classList.contains("dark")
+  );
+
+  document.getElementById("darkBtn").innerText=
+    document.body.classList.contains("dark")
+    ? "☀️"
+    : "🌙";
+}
+
+
+/* THEMES */
+
+function theme(primary,secondary){
+
+  document.documentElement.style
+    .setProperty("--primary",primary);
+
+  document.documentElement.style
+    .setProperty("--secondary",secondary);
+
+  localStorage.setItem(
+    "theme",
+    JSON.stringify({
+      primary,
+      secondary
+    })
+  );
+}
+
+
+/* BADGES */
+
+function unlockBadges(){
+
+  if(get("goals").length>0)
+    document.getElementById("badgeGoal")
+      .classList.add("unlocked");
+
+  if(get("memories").length>0)
+    document.getElementById("badgeMemory")
+      .classList.add("unlocked");
+
+  if(localStorage.getItem("futureLetter"))
+    document.getElementById("badgeLetter")
+      .classList.add("unlocked");
+
+  if(get("capsules").length>0)
+    document.getElementById("badgeCapsule")
+      .classList.add("unlocked");
+
+  if(get("achievements").length>0)
+    document.getElementById("badgeAchievement")
+      .classList.add("unlocked");
+}
+
+
+/* STREAK */
+
+function updateStreak(){
+
+  const today=
+    new Date().toISOString().slice(0,10);
+
+  const last=
+    localStorage.getItem("lastVisit");
+
+  let streak=
+    Number(localStorage.getItem("streak") || 1);
+
+  if(last && last!==today){
+
+    const lastDate=new Date(last);
+    const current=new Date(today);
+
+    const difference=
+      Math.floor(
+        (current-lastDate)/(1000*60*60*24)
+      );
+
+    if(difference===1)
+      streak++;
+    else
+      streak=1;
+  }
+
+  localStorage.setItem("lastVisit",today);
+  localStorage.setItem("streak",streak);
+
+  document.getElementById("streakCount")
+    .innerText=streak;
+}
+
+
+/* INSTALLABLE PWA */
+
+let deferredPrompt=null;
+
+window.addEventListener(
+  "beforeinstallprompt",
+  e=>{
+    e.preventDefault();
+    deferredPrompt=e;
+  }
+);
+
+async function installApp(){
+
+  if(!deferredPrompt){
+
+    alert(
+      "To install: open this page in Chrome, then use the browser's Install App option. 📱"
+    );
+
+    return;
+  }
+
+  deferredPrompt.prompt();
+
+  await deferredPrompt.userChoice;
+
+  deferredPrompt=null;
+}
+
+
+/* CONFETTI */
+
+function celebrate(){
+
+  const emojis=[
+    "✨","🎉","💜","⭐","🌸","💫","🎀","🌈"
+  ];
+
+  for(let i=0;i<55;i++){
+
+    const c=document.createElement("div");
+
+    c.className="confetti";
+
+    c.innerText=
+      emojis[Math.floor(Math.random()*emojis.length)];
+
+    c.style.left=
+      Math.random()*100+"vw";
+
+    c.style.animationDuration=
+      (1.5+Math.random()*2)+"s";
+
+    document.body.appendChild(c);
+
+    setTimeout(()=>{
+      c.remove();
+    },4000);
+  }
+}
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(text){
+
+  return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+
+/* RESET */
+
+function resetEverything(){
+
+  if(
+    confirm(
+      "This will delete your Future Me data from this browser. Continue?"
+    )
+  ){
+
+    localStorage.clear();
+
+    location.reload();
+  }
+}
+
+
+/* LOAD */
+
+function loadApp(){
+
+  updateProfile();
+
+  const savedLetter=
+    localStorage.getItem("futureLetter");
+
+  if(savedLetter)
+    document.getElementById("letterText").value=savedLetter;
+
+  if(localStorage.getItem("darkMode")==="true")
+    document.body.classList.add("dark");
+
+  document.getElementById("darkBtn").innerText=
+    document.body.classList.contains("dark")
+    ? "☀️"
+    : "🌙";
+
+  const savedTheme=
+    localStorage.getItem("theme");
+
+  if(savedTheme){
+
+    const t=JSON.parse(savedTheme);
+
+    document.documentElement.style
+      .setProperty("--primary",t.primary);
+
+    document.documentElement.style
+      .setProperty("--secondary",t.secondary);
+  }
+
+  renderGoals();
+  renderBucket();
+  renderAchievements();
+  renderMemories();
+  renderCapsules();
+  renderCalendar();
+  updateStreak();
+  unlockBadges();
+
+  const mood=
+    localStorage.getItem("todayMood");
+
+  if(mood)
+    document.getElementById("moodResult").innerText=
+      `Today I feel: ${mood} 💜`;
+}
+
+
+/* START */
+
+loadApp();
+
+</script>
+
+</body>
+</html>
